@@ -20,11 +20,22 @@ async function signup(req, res, next) {
 async function login(req, res, next) {
     userService
       .loginUser(req.body)
-      .then((user) => res.send(user))
+      .then((user) => {
+
+        const {token} = user
+
+        console.log(user)
+        res.cookie('token', token, { httpOnly: true });
+        res.send(user)
+      
+      
+      })
       .catch(next);
   }
 
 async function users(req, res, next) {
+
+  // console.log("token", req.cookie.token)
   userService
     .getAllUsers()
     .then((users) => res.send(users))

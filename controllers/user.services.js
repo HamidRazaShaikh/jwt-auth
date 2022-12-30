@@ -29,8 +29,8 @@ async function loginUser(user) {
 }
 
 async function getAllUsers() {
-const allusers = await users.find({},{"password": 0});
-return allusers
+const allUsers = await users.find({},{"password": 0});
+return allUsers
 
 }
 

@@ -7,7 +7,8 @@ function jwt() {
   const { secret } = config;
 
   return expressjwt({
-    secret,
+    secret,    
+    getToken: req => req.cookies.token,
     algorithms: ["HS256"],
   }).unless({
     path: [
